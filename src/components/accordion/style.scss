@@ -1,0 +1,124 @@
+.accordion {
+	background-color: #ebebeb;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	@media(min-width: 992px) {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+	.accordion__col01 {
+		width: 100%;
+		@media(min-width: 992px) {
+			width: 30%;
+		}
+	}
+	.accordion__col02 {
+		@media(min-width: 992px) {
+			width: 70%;
+		}
+	}
+
+	.accordion__nav {
+		list-style: none;
+		margin-bottom: 0;
+		li {
+			display: block;
+			border-bottom: 1px solid #ebebeb;
+			button {
+				display: block;
+				width: 100%;
+				padding: 20px 30px 20px 48px;
+				background-color: #ccc;
+				color: #000;
+				font-weight: 300;
+				text-align: left;
+				transition: all 0.4s;
+				svg {
+					transition: transform 0.4s;
+					transform: rotate(-180deg);
+					font-size: 10px;
+					margin-left: 5px;
+				}
+				&:hover {
+					background-color: #aaa;
+				}
+				&.active {
+					background-color: #000;
+					color: #fff;
+					font-weight: 700;
+					svg {
+						transform: rotate(0deg);
+					}
+				}
+			}
+		}
+	}
+	.accordion__col02 {
+		position: relative;
+		background-color: #fff;
+		padding: 20px 20px;
+		min-height: 340px;
+		@media(min-width: 992px) {
+			padding: 30px 50px;
+		}
+		@media(min-width: 1200px) {
+			padding: 50px 98px;
+		}
+	}
+	.accordion__content {
+		position: relative;
+		display: block;
+		height: 0;
+		overflow: hidden;
+		transition: all 0.4s ease;
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+			transition: all 0.4s ease 0.4s;
+			z-index: 1;
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 28px; height: 28px;
+			display: block;
+			z-index: 2;
+			background: url(../../images/loader.png) no-repeat 0 0;
+			transition: all 0.4s ease 0.4s;
+			animation: loading 1s linear infinite;
+		}
+		&.active {
+			height: auto;
+			transition: all 0.4s ease 0.6s;
+			&:before {
+				opacity: 0;
+				visibility: hidden;
+			}
+			&:after {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+	}
+
+	@keyframes loading {
+		from {
+		  transform: rotate(0deg);
+		}
+		to {
+		  transform: rotate(360deg);
+		}
+	  }
